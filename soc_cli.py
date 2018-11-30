@@ -1,14 +1,15 @@
 import socket, sys, json, random
+from time import sleep
 
-if (len(sys.argv) !=6):
+if (len(sys.argv) != 6):
     print('Usage: ".py [ip addr] [port] [ID] [num of data to send] [frequence/s] "')
     sys.exit()
 
 ADDR = sys.argv[1]
-PORT = sys.argv[2]
-SYS = sys.argv[3]
-SEND_NUM = sys.argv[4]
-FREQ = sys.argv[5]
+PORT = int(sys.argv[2])
+ID = int(sys.argv[3])
+SEND_NUM = int(sys.argv[4])
+FREQ = int(sys.argv[5])
 
 measurement = "temperature"
 
@@ -22,12 +23,12 @@ for i in range(SEND_NUM):
             "counter"       : i,
             "measurement"   : measurement, 
             "field": {
-                "value"     : temperature,
+                "value"     : temp,
             }
         }
-    msg = json.dump(json_body)
+    msg = json.dumps(json_body)
     print("Send following message: {0}".format(msg))
 
-    s.send(msg.encode('urf-8'))
-    tm.sleep(FREQ)
+    s.send(msg.encode('utf-8'))
+    sleep(FREQ)
 

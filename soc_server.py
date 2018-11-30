@@ -22,15 +22,15 @@ while inputs:
     print("Server start")
     rready, wready, xready = select.select(inputs, outputs, inputs)
     for s in rready:
-        print("rready")
-        con, addr = s.accept()
-        con.setblocking(False)
-        inputs.append(con)
-    else:
-        print("wready")
-        msg = s.recv(BUF_SIZE).decode('utf-8')
-        if not msg:
-            break
+        if s is server:
+            print("rready")
+            con, addr = s.accept()
+            con.setblocking(False)
+            inputs.append(con)
+        else:
+            msg = s.recv(BUF_SIZE).decode('utf-8')
+            if not msg:
+                break
         print(msg)
     for s in xready:
         print("xreadd")
