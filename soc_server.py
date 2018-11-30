@@ -31,7 +31,7 @@ while inputs:
             msg = s.recv(BUF_SIZE).decode('utf-8')
             if not msg:
                 break
-        print(msg)
+            print(msg)
     for s in xready:
         print("xreadd")
         inputs.remove(s)
