@@ -1,13 +1,15 @@
-import sys, socket, select 
+import sys, socket, select, random
+import json
 
-if (len(sys.argv) != 3):
-    print('Usage: ".py [Host] [Port]" \n')
+if (len(sys.argv) != 4):
+    print('Usage: ".py [Host] [Port] [ID]" \n')
     sys.exit()
 
 BUF_SIZE=4096
 TIME_OUT=10
 HOST = sys.argv[1]
 PORT = int(sys.argv[2])
+ID = sys.argv[3]
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True)
@@ -17,9 +19,20 @@ server.bind((HOST, PORT))
 server.listen(5)
 inputs = [server]
 outputs= []
+counter = 0
+
+print("Server start: ID: {0}".format(ID))
+
+def create_message(dest_id):
+    json_body = {
+            "id"            : ID,
+            "dest_id"       : dest_id,
+            "counter"       : counter,
+            "measurement"   : None,
+    }
+    return json_body
 
 while inputs: 
-    print("Server start")
     rready, wready, xready = select.select(inputs, outputs, inputs)
     for s in rready:
         if s is server:
@@ -31,7 +44,14 @@ while inputs:
             msg = s.recv(BUF_SIZE).decode('utf-8')
             if not msg:
                 break
-        print(msg)
+            print("[CLIENT]         :{0}".format(msg))
+            server_msg = create_message(json.loads(msg)['id'])
+            print("[SERVER]         :{0}".format(server_msg))
+            s.send(json.dumps(server_msg))
+            counter+=1
+    for s in wready:
+        if s is server:
+            print("wready")
     for s in xready:
         print("xreadd")
         inputs.remove(s)
