@@ -45,12 +45,13 @@ while inputs:
             if not msg:
                 break
             print("[CLIENT]         :{0}".format(msg))
+            client_msg = json.loads(msg)
 
-            if msg["reply_flag"]:
-                server_msg = create_message(json.loads(msg)['id'])
+            if int(client_msg["reply"]):
+                server_msg = create_message(client_msg['id'])
                 print("[SERVER]         :{0}".format(server_msg))
                 s.send(json.dumps(server_msg).encode('utf-8'))
-            counter+=1
+                counter+=1
     for s in wready:
         if s is server:
             print("wready")

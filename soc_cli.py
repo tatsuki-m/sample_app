@@ -21,7 +21,7 @@ s.connect((ADDR, PORT))
 
 for i in range(SEND_NUM):
     temp = random.randint(0, 100)
-    reply_flag = random.randint(0, 1)
+    reply_flag = random.randint(0, 2)
     json_body = {
             "id"            : ID,
             "counter"       : i,
@@ -33,7 +33,7 @@ for i in range(SEND_NUM):
     print("[CLIENT]           : {0}".format(msg))
     s.send(msg.encode('utf-8'))
 
-    if reply_flag:
+    if reply_flag is 0:
         server_msg = s.recv(BUF_SIZE).decode('utf-8')
         if not server_msg:
             sleep(FREQ)
