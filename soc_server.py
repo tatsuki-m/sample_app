@@ -47,7 +47,7 @@ while inputs:
             print("[CLIENT]         :{0}".format(msg))
             server_msg = create_message(json.loads(msg)['id'])
             print("[SERVER]         :{0}".format(server_msg))
-            s.send(json.dumps(server_msg))
+            s.send(json.dumps(server_msg).encode('utf-8'))
             counter+=1
     for s in wready:
         if s is server:

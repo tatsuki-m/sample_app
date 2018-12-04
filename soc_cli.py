@@ -10,7 +10,7 @@ ADDR = sys.argv[1]
 PORT = int(sys.argv[2])
 ID = int(sys.argv[3])
 SEND_NUM = int(sys.argv[4])
-FREQ = int(sys.argv[5])
+FREQ = float(sys.argv[5])
 
 measurement = "temperature"
 
