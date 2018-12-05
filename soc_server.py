@@ -47,7 +47,7 @@ while inputs:
             print("[CLIENT]         :{0}".format(msg))
             client_msg = json.loads(msg)
 
-            if int(client_msg["reply"]):
+            if int(client_msg["reply"]) is 0:
                 server_msg = create_message(client_msg['id'])
                 print("[SERVER]         :{0}".format(server_msg))
                 s.send(json.dumps(server_msg).encode('utf-8'))
