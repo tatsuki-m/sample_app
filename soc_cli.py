@@ -28,6 +28,18 @@ for i in range(SEND_NUM):
             "measurement"   : measurement, 
             "value"         : temp,
             "reply"         : reply_flag,
+            "email"         : "keiokeiokeiokeiokeiokeiokeiokeio@keio.jp",
+            "address"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address1"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address2"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address3"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address4"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address5"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address6"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address7"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address8"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address9"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address10"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
     }
     msg = json.dumps(json_body)
     print("[CLIENT]           : {0}".format(msg))

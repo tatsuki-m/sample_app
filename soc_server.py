@@ -29,6 +29,18 @@ def create_message(dest_id):
             "dest_id"       : dest_id,
             "counter"       : counter,
             "measurement"   : None,
+            "email"         : "keiokeiokeiokeiokeiokeiokeiokeio@keio.jp",
+            "address"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address1"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address2"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address3"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address4"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address5"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address6"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address7"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address8"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address9"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
+            "address10"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
     }
     return json_body
 
