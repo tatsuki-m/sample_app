@@ -9,7 +9,7 @@ BUF_SIZE=4096
 TIME_OUT=10
 HOST = sys.argv[1]
 PORT = int(sys.argv[2])
-ID = sys.argv[3]
+ID = int(sys.argv[3])
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True)
@@ -45,9 +45,11 @@ while inputs:
             if not msg:
                 break
             print("[CLIENT]         :{0}".format(msg))
-            server_msg = create_message(json.loads(msg)['id'])
-            print("[SERVER]         :{0}".format(server_msg))
-            s.send(json.dumps(server_msg).encode('utf-8'))
+
+            if msg["reply_flag"]:
+                server_msg = create_message(json.loads(msg)['id'])
+                print("[SERVER]         :{0}".format(server_msg))
+                s.send(json.dumps(server_msg).encode('utf-8'))
             counter+=1
     for s in wready:
         if s is server:

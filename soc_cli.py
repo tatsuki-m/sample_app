@@ -21,21 +21,24 @@ s.connect((ADDR, PORT))
 
 for i in range(SEND_NUM):
     temp = random.randint(0, 100)
+    reply_flag = random.randint(0, 1)
     json_body = {
             "id"            : ID,
             "counter"       : i,
             "measurement"   : measurement, 
-            "value"     : temp,
+            "value"         : temp,
+            "reply"         : reply_flag,
     }
     msg = json.dumps(json_body)
     print("[CLIENT]           : {0}".format(msg))
     s.send(msg.encode('utf-8'))
 
-    server_msg = s.recv(BUF_SIZE).decode('utf-8')
-    if not server_msg:
-        sleep(FREQ)
-        break
-    #print("[SERVER]           : {0}".format(msg))
+    if reply_flag:
+        server_msg = s.recv(BUF_SIZE).decode('utf-8')
+        if not server_msg:
+            sleep(FREQ)
+            break
+        #print("[SERVER]           : {0}".format(msg))
     sleep(FREQ)
 
 
