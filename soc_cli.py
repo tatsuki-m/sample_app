@@ -43,7 +43,7 @@ for i in range(SEND_NUM):
             "address10"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
     }
     msg = json.dumps(json_body)
-    print("[CLIENT]           : {0}".format(msg))
+    print("[CLIENT]           : {0}".format(msg["id"]))
     s.send(msg.encode('utf-8'))
 
     if reply_flag is 0:

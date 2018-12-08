@@ -56,8 +56,9 @@ while inputs:
             msg = s.recv(BUF_SIZE).decode('utf-8')
             if not msg:
                 break
-            print("[CLIENT]         :{0}".format(msg))
+            #print("[CLIENT]         :{0}".format(msg))
             client_msg = json.loads(msg)
+            print("[CLIENT]         :{0}".format(client_msg["id"]))
 
             if int(client_msg["reply"]) is 0:
                 server_msg = create_message(client_msg['id'])
