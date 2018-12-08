@@ -44,7 +44,7 @@ def create_message(dest_id):
     }
     return json_body
 
-while inputs: 
+while inputs:
     rready, wready, xready = select.select(inputs, outputs, inputs)
     for s in rready:
         if s is server:

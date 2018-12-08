@@ -21,13 +21,14 @@ s.connect((ADDR, PORT))
 
 for i in range(SEND_NUM):
     temp = random.randint(0, 100)
-    reply_flag = random.randint(0, 2)
+    reply_flag = 0 #random.randint(0, 2)
     json_body = {
             "id"            : ID,
             "counter"       : i,
             "measurement"   : measurement, 
             "value"         : temp,
             "reply"         : reply_flag,
+    #}
             "email"         : "keiokeiokeiokeiokeiokeiokeiokeio@keio.jp",
             "address"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
             "address1"       : 'Kanagawa prefecture, Yokohama-city, Kohoku-word, Hiyoshi 3-14-1',
