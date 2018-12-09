@@ -23,6 +23,10 @@ counter = 0
 d = b"measurementi" + b"b" * 1012
 
 print("Server start: ID: {0}".format(ID))
+print("===================================")
+print("ADDR             : {0}".format(ADDR))
+print("ID               : {0}".format(ID))
+print("===================================")
 
 def create_message(dest_id):
     json_body = {

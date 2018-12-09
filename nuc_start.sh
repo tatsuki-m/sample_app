@@ -7,8 +7,8 @@ NODE_3=miura-nuc-3
 DEFAULT_FREQ=1
 
 DEFAULT_DST=10.10.0.11
-CLOUD_NODE_DIR="/home/miura/p/sample_app"
-SENSOR_NODE_DIR="/home/miura/p/sample_app"
+CLOUD_NODE_DIR="/home/miura/p/sample_app/app_eval"
+SENSOR_NODE_DIR="/home/miura/p/sample_app/app_eval"
 #DEFAULT_DST=192.168.3.33
 #SENSOR_NODE_DIR="/home/miura/p/sample_app"
 #CLOUD_NODE_DIR="/home/pi/p/sample_app"
