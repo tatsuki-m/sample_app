@@ -19,7 +19,7 @@ PORT = int(sys.argv[2])
 ID = int(sys.argv[3])
 SEND_NUM = int(sys.argv[4])
 FREQ = 1/float(sys.argv[5])
-d = b"measurement" + b"a" * 1010 #(len(counter) + len("measurement") + 1010)
+d = ",measurement," + str(ID) +"," +"a" * 1010 #(len(counter) + len("measurement") + 1010)
 
 measurement = "temperature"
 
@@ -27,7 +27,7 @@ print("Client Start ID:     {0}".format(ID))
 print("===================================")
 print("ADDR             : {0}".format(ADDR))
 print("ID               : {0}".format(ID))
-print("SEND_NUC         : {0}".format(SEND_NUC))
+print("SEND_NUM         : {0}".format(SEND_NUM))
 print("FREQ             : {0}".format(FREQ))
 print("===================================")
 
@@ -36,18 +36,14 @@ s.connect((ADDR, PORT))
 
 start_ms = datetime.now()
 for i in range(SEND_NUM):
-    s.send(msg.encode('utf-8'))
-    print("[CLIENT]         ID: {0}, COUNTER: {1}".format(ID,i)
-    sleep(FREQ)A
+    s.send((str(i) + d).encode('utf-8'))
+    print("[CLIENT]         ID: {0}, COUNTER: {1}".format(ID,i))
+    server_msg = s.recv(BUF_SIZE)
+    print("[SERVER]         GET")
+    if not server_msg:
+        sleep(FREQ)
+        break
 end_ms = datetime.now()
-print "elap: %d [ms]" % millis(start_ms, end_ms)
-
-    #if reply_flag is 0:
-    #    server_msg = s.recv(BUF_SIZE).decode('utf-8')
-    #    if not server_msg:
-    #        sleep(FREQ)
-    #        break
-    #    #print("[SERVER]           : {0}".format(msg))
-
+print("elap: %d [ms]" % millis(start_ms, end_ms))
 s.close()
 

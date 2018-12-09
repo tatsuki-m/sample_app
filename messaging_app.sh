@@ -3,7 +3,7 @@
 HOSTNAME=`hostname`
 NODE_1=miura-nuc-1
 NODE_2=sensor2
-NODE_3=sensor3
+NODE_3=miura-nuc-3
 
 DEFAULT_DST=10.10.0.11
 SENSOR_NODE_DIR="/home/pi/p/sample_app/app_messaging"

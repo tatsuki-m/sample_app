@@ -52,7 +52,7 @@ add_node_network_info()
 
 
 if [ $# -eq 1 ]; then
-	DEFAULT_DST=$1
+	DEFAULT_FREQ=$1
 fi
 
 case ${HOSTNAME} in
@@ -71,7 +71,7 @@ case ${HOSTNAME} in
 		    #cd $SENSOR_NODE_DIR
 		    #python soc_cli.py ${DEFAULT_DST} 8080 3 1000 1;;
     	  cd $CLOUD_NODE_DIR
-		    python soc_cli.py ${DEFAULT_DST} 8080 3 10000 ${DEFAULT_FREQ};;
+		    python soc_cli.py ${DEFAULT_DST} 8080 3 1000 ${DEFAULT_FREQ};;
 	*)
 		echo "Unknown hostname"
 esac
