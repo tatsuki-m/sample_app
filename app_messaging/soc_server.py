@@ -20,6 +20,7 @@ server.listen(5)
 inputs = [server]
 outputs= []
 counter = 0
+d = b"measurementi" + b"b" * 1012
 
 print("Server start: ID: {0}".format(ID))
 
@@ -53,18 +54,24 @@ while inputs:
             con.setblocking(False)
             inputs.append(con)
         else:
-            msg = s.recv(BUF_SIZE).decode('utf-8')
+            msg = s.recv(BUF_SIZE)
             if not msg:
                 break
             #print("[CLIENT]         :{0}".format(msg))
-            client_msg = json.loads(msg)
-            print("[CLIENT]         :{0}".format(client_msg["id"]))
+            #client_msg = json.loads(msg.decode('utf-8'))
+            #print("[CLIENT]         :{0}, {1}".format(client_msg["id"], client_msg["counter"]))
 
-            if int(client_msg["reply"]) is 0:
-                server_msg = create_message(client_msg['id'])
-                print("[SERVER]         :{0}".format(server_msg))
-                s.send(json.dumps(server_msg).encode('utf-8'))
-                counter+=1
+            #if int(client_msg["reply"]) is 0:
+            #    server_msg = create_message(client_msg['id'])
+            #    #print("[SERVER]         :{0}".format(server_msg))
+            #    print("[SERVER]         :{0}, {1}".format(server_msg["id"], server_msg["counter"]))
+            #    s.send(json.dumps(server_msg).encode('utf-8'))
+            #    counter+=1
+
+            #s.send(d)
+            #counter+=1
+
+            print(counter)
     for s in wready:
         if s is server:
             print("wready")
