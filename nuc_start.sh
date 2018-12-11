@@ -65,13 +65,13 @@ case ${HOSTNAME} in
 	${NODE_2})
 		    add_cloud_network_info
 		    cd $SENSOR_NODE_DIR
-		    python soc_cli.py ${DEFAULT_DST} 8080 2 10000 ${DEFAULT_FREQ};;
+		    python soc_cli.py ${DEFAULT_DST} 8080 2 1000 ${DEFAULT_FREQ};;
 	${NODE_3})
 		    add_cloud_network_info	
 		    #cd $SENSOR_NODE_DIR
 		    #python soc_cli.py ${DEFAULT_DST} 8080 3 1000 1;;
     	  cd $CLOUD_NODE_DIR
-		    python soc_cli.py ${DEFAULT_DST} 8080 3 1000 ${DEFAULT_FREQ};;
+		    python soc_cli.py ${DEFAULT_DST} 8080 3 50000 ${DEFAULT_FREQ};;
 	*)
 		echo "Unknown hostname"
 esac

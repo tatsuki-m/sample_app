@@ -13,12 +13,13 @@ if (len(sys.argv) != 6):
     print('Usage: ".py [ip addr] [port] [ID] [num of data to send] [frequence/s] "')
     sys.exit()
 
-BUF_SIZE=4096
+BUF_SIZE=1024
 ADDR = sys.argv[1]
 PORT = int(sys.argv[2])
 ID = int(sys.argv[3])
 SEND_NUM = int(sys.argv[4])
 FREQ = 1/float(sys.argv[5])
+
 d = ",measurement," + str(ID) +"," +"a" * 1010 #(len(counter) + len("measurement") + 1010)
 
 measurement = "temperature"
@@ -40,8 +41,8 @@ for i in range(SEND_NUM):
     print("[CLIENT]         ID: {0}, COUNTER: {1}".format(ID,i))
     server_msg = s.recv(BUF_SIZE)
     print("[SERVER]         GET")
+    sleep(FREQ)
     if not server_msg:
-        sleep(FREQ)
         break
 end_ms = datetime.now()
 print("elap: %d [ms]" % millis(start_ms, end_ms))
