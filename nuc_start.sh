@@ -2,7 +2,7 @@
 
 HOSTNAME=`hostname`
 NODE_1=miura-nuc-1
-NODE_2=sensor2
+NODE_2=miura-nuc-2
 NODE_3=miura-nuc-3
 DEFAULT_FREQ=1
 
@@ -35,7 +35,7 @@ add_node_network_info()
   	sudo ip route add 192.168.3.0/24 dev eno1
   	# smart-router-3: enp3s0
   	sudo arp -s 192.168.3.3 80:ee:73:e0:0b:27
-    # nuc-3
+    	# nuc-3
   	sudo arp -s 192.168.3.33 f4:4d:30:67:f5:9e
 
 
@@ -46,8 +46,8 @@ add_node_network_info()
   	sudo ip route add 192.168.2.0/24 dev eno1
   	# smart-router-2: enp3s0
   	sudo arp -s 192.168.2.2 80:ee:73:e0:0b:57
-    #nuc-2?
-  	sudo arp -s 192.168.2.22 b8:27:eb:55:a3:5f
+    	#nuc-2?
+  	sudo arp -s 192.168.2.22 f4:4d:30:67:d5:f5
 }
 
 
