@@ -1,5 +1,6 @@
 import sys, socket, select, random
 import json
+import pdb
 
 if (len(sys.argv) != 4):
     print('Usage: ".py [Host] [Port] [ID]" \n')
@@ -19,7 +20,8 @@ server.bind((HOST, PORT))
 server.listen(5)
 inputs = [server]
 outputs= []
-counter = 0
+counter_2 = 0
+counter_3 = 0
 d = ",measurement," + str(ID) +"," +"a" * 1010
 
 print("Server start: ID: {0}".format(ID))
@@ -40,10 +42,19 @@ while inputs:
             msg = s.recv(BUF_SIZE)
             if not msg:
                 break
-            print("[CLIENT]         GET")
-            print("[SERVER]         ID: {0},  COUNTER: {1}".format(ID,counter))
-            s.send((str(counter) +d).encode('utf-8'))
-            counter+=1
+            s_id = str(msg).split(',')[2]
+            if s_id == '2':
+                print("[CLIENT]         GET ID 2")
+                print("[SERVER]         ID: {0},  COUNTER: {1}".format(ID,counter_2))
+                s.send((str(counter_2) +d).encode('utf-8'))
+                counter_2+=1
+            else:
+                print("[CLIENT]         GET ID 3")
+                print("[SERVER]         ID: {0},  COUNTER: {1}".format(ID,counter_3))
+                s.send((str(counter_3) +d).encode('utf-8'))
+                counter_3+=1
+
+
     #for s in wready:
     #    if s is server:
     #        print("wready")
